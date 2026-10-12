@@ -9,8 +9,27 @@ Customer churn classifier trained with a SageMaker pipeline and served two ways:
 | Task | Binary classification: will a customer churn? |
 | Model | scikit-learn `Pipeline` (imputation + ordinal encoding + `RandomForestClassifier`) |
 | Features | Age, Gender, Tenure, Usage Frequency, Support Calls, Payment Delay, Subscription Type, Contract Length, Total Spend, Last Interaction |
-| Test results | Accuracy 0.975 · Precision 0.995 · Recall 0.961 |
+| Test results | Accuracy 0.975 · Precision 0.995 · Recall 0.961 · F1 0.978 · ROC AUC 0.994 |
 | Stack | Python, scikit-learn, FastAPI, Streamlit, AWS SageMaker, AWS EC2 |
+
+## Results
+
+Evaluated on the held-out test split (20% of the data, 88,167 customers).
+
+| Metric | Value |
+|---|---|
+| Accuracy | 0.975 |
+| Precision | 0.995 |
+| Recall | 0.961 |
+| F1 | 0.978 |
+| ROC AUC | 0.994 |
+
+Confusion matrix:
+
+| | Predicted No Churn | Predicted Churn |
+|---|---|---|
+| **Actual No Churn** | 37,824 | 239 |
+| **Actual Churn** | 1,943 | 48,161 |
 
 ## Repository structure
 
