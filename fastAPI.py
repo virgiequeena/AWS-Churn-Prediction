@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from typing import Literal
 import joblib
 import numpy as np
 import pandas as pd
@@ -13,13 +14,13 @@ CLASS_NAMES = ["No Churn", "Churn"]
 #field names must match the column names the pipeline was trained on
 class CustomerInput(BaseModel):
     Age: int
-    Gender: str
+    Gender: Literal["Male", "Female"]
     Tenure: float
     UsageFrequency: int
     SupportCalls: float
     PaymentDelay: int
-    SubscriptionType: str
-    ContractLength: str
+    SubscriptionType: Literal["Basic", "Standard", "Premium"]
+    ContractLength: Literal["Monthly", "Quarterly", "Annual"]
     TotalSpend: float
     LastInteraction: int
 
